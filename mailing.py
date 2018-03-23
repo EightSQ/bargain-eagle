@@ -18,6 +18,6 @@ def mail(offers):
 def sendMail(from_addr, to_addr, subject, body):
     try:
         p = Popen(['mail', '-r', from_addr, '-s', subject, to_addr], stdin=PIPE)
-        p.communicate(body)
+        p.communicate(bytes(body, encoding='utf-8'))
     except Exception as e:
         print(e)
